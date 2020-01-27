@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="imageExpand.cpp" path="C:\Users\Venci\Videos\Project\imageExpand.cpp"/>
+    <originFiles name="header.hpp" path="C:\Users\Venci\Videos\Project\header.hpp"/>
+    <originFiles name="definition.cpp" path="C:\Users\Venci\Videos\Project\definition.cpp"/>
+    <originFiles name="Convert.cpp" path="C:\Users\Venci\Videos\Project\Convert.cpp"/>
+  </source>
+  <testbench>
+    <originFiles name="testbench.cpp" path="C:\Users\Venci\Videos\Project\testbench.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="new" solutionName="solution1" date="2020-01-09T19:10:58.410+0800"/>
+        <logs message="@E Simulation failed: SIGSEGV." projectName="new" solutionName="solution1" date="2020-01-09T19:10:58.333+0800"/>
+        <logs message="ERROR: [SIM 211-100] CSim failed with errors." projectName="new" solutionName="solution1" date="2020-01-09T19:09:28.002+0800"/>
+        <logs message="@E Simulation failed: SIGSEGV." projectName="new" solutionName="solution1" date="2020-01-09T19:09:27.898+0800"/>
+      </csimLog>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T19:36:21.385+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T19:31:55.278+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T19:29:27.799+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T19:17:06.532+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T19:13:34.419+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T19:10:50.372+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T19:09:19.730+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T18:57:40.098+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T18:52:23.686+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T18:42:08.361+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T18:40:47.398+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T18:23:34.507+0800" type="Warning"/>
+        <logs message="WARNING: [SIM 211-51] HLS only supports CLANG compiler in Linux." projectName="new" solutionName="solution1" date="2020-01-09T18:14:33.511+0800" type="Warning"/>
+      </csimLog>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

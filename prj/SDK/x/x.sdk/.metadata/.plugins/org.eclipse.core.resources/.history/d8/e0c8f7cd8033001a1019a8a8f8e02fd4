@@ -1,0 +1,104 @@
+#include <stdio.h>
+#include <>string.h>
+#include <stdlib.h>
+#include <math.h>
+//#include fstream
+
+#define bufSize 50
+#define PI 3.1415926535897932384626
+
+quantization function for a given quality requirement
+this simply evaluates the quantization matrix, and does not actually
+perform the quantization step in the algorithm
+void calc_quant(float qm[8][8], int quality)
+{
+ httpstackoverflow.comquestions29215879how-can-i-generalize-the-quantization-matrix-in-jpeg-compression
+ int i,j;
+ float def[8][8] = {
+  {16,  11,  10,  16,  24, 40,  51,  61} ,
+  {12,  12,  14,  19,  26, 58,  60,  55} ,
+  {14,  13,  16,  24,  40, 57,  69,  56} ,
+  {14,  17,  22,  29,  51, 87,  80,  62} ,
+  {18,  22,  37,  56,  68, 109, 103, 77} ,
+  {24,  35,  55,  64,  81, 104, 113,  92} ,
+  {49,  64,  78,  87,  103, 121, 120, 101} ,
+  {72,  92,  95,  98, 112, 100, 103,  99}
+ };
+ float S;
+ if(quality  50)
+  S = (5000(float)(quality));
+ else
+  S = 200-2quality;
+ for(i=0; i8; i++)
+ {
+  for(j=0; j8; j++)
+  {
+   qm[i][j]=(float)((Sdef[i][j]+50)100.0);
+  }
+ }
+}
+
+void quantize(float qm[8][8], float G[8][8])
+{
+ int i,j;
+ for(i=0; i8; i++)
+ {
+  for(j=0; j8; j++)
+  {
+   G[i][j] = (int)(G[i][j](float)qm[i][j])qm[i][j];
+  }
+ }
+}
+
+float al(int x)
+{
+ if(x==0)
+  return 1.0sqrt(2.0);
+ else
+  return 1.0;
+}
+
+float singleGUV(float subimg[8][8], int u, int v, int inv, float cosMat[8][8])
+{
+ float G=0;
+ int x,y;
+
+ for(x=0; x8; x++)
+ {
+  for(y=0; y8; y++)
+  {
+   if(inv==0)
+    G+=0.25al(u)al(v)subimg[x][y]cosMat[u][x]cosMat[v][y];
+   else
+    G+=0.25al(x)al(y)subimg[x][y]cosMat[x][u]cosMat[y][v];
+  }
+ }
+ return G;
+}
+
+void shift128(float subimg[8][8])
+{
+ int i,j;
+ for(i=0; i8; i++)
+ {
+  for(j=0; j8; j++)
+  {
+   subimg[i][j]-=128;
+  }
+ }
+}
+
+void DCT_8x8_2D(float G[8][8], float subimg[8][8], int shift, int inv, float cosMat[8][8])
+{
+ if(shift==1)
+  shift128(subimg);
+ int i,j;
+
+ for(i=0; i8; i++)
+ {
+  for(j=0; j8; j++)
+  {
+   G[i][j]=singleGUV(subimg, i, j, inv, cosMat);
+  }
+ }
+}

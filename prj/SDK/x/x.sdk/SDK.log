@@ -1,0 +1,291 @@
+16:07:10 INFO  : Registering command handlers for SDK TCF services
+16:07:10 INFO  : Launching XSCT server: xsct.bat -interactive C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\temp_xsdb_launch_script.tcl
+16:07:14 INFO  : XSCT server has started successfully.
+16:07:14 INFO  : Successfully done setting XSCT server connection channel  
+16:07:18 INFO  : Successfully done setting SDK workspace  
+16:07:18 INFO  : Processing command line option -hwspec C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper.hdf.
+16:15:28 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:15:29 INFO  : Jtag cable 'Digilent Zybo 210279539142A' is selected.
+16:15:29 INFO  : 'jtag frequency' command is executed.
+16:15:29 INFO  : Sourcing of 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl' is done.
+16:15:30 INFO  : Context for 'APU' is selected.
+16:15:30 INFO  : Hardware design information is loaded from 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf'.
+16:15:30 INFO  : Context for 'APU' is selected.
+16:15:30 INFO  : 'stop' command is executed.
+16:15:30 INFO  : 'ps7_init' command is executed.
+16:15:31 INFO  : 'ps7_post_config' command is executed.
+16:15:31 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+loadhw C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+stop
+ps7_init
+ps7_post_config
+----------------End of Script----------------
+
+16:15:31 INFO  : Launch script is exported to file 'C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_dazuoye.elf_on_local.tcl'
+16:31:45 INFO  : Disconnected from the channel tcfchan#1.
+16:45:17 INFO  : Registering command handlers for SDK TCF services
+16:45:18 INFO  : Launching XSCT server: xsct.bat -interactive C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\temp_xsdb_launch_script.tcl
+16:45:21 INFO  : XSCT server has started successfully.
+16:45:21 INFO  : Successfully done setting XSCT server connection channel  
+16:45:21 INFO  : Processing command line option -hwspec C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper.hdf.
+16:45:21 INFO  : Successfully done setting SDK workspace  
+16:45:21 INFO  : Checking for hwspec changes in the project system_wrapper_hw_platform_0.
+16:48:01 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1578646059916,  Project:1578643592148
+16:48:01 INFO  : Project system_wrapper_hw_platform_0's source hardware specification located at C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+16:48:08 INFO  : Copied contents of C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper.hdf into \system_wrapper_hw_platform_0\system.hdf.
+16:48:13 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+16:48:16 INFO  : 
+16:48:17 INFO  : Updating hardware inferred compiler options for dazuoye.
+16:48:17 INFO  : Clearing existing target manager status.
+16:48:19 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+16:48:19 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+16:49:20 ERROR : Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+16:49:37 INFO  : Registering command handlers for SDK TCF services
+16:49:37 INFO  : Launching XSCT server: xsct.bat -interactive C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\temp_xsdb_launch_script.tcl
+16:49:40 INFO  : XSCT server has started successfully.
+16:49:41 INFO  : Successfully done setting XSCT server connection channel  
+16:49:41 INFO  : Processing command line option -hwspec C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper.hdf.
+16:49:41 INFO  : Successfully done setting SDK workspace  
+16:49:41 INFO  : Checking for hwspec changes in the project system_wrapper_hw_platform_0.
+16:50:06 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:50:07 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:50:08 INFO  : FPGA configured successfully with bitstream "C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system_wrapper.bit"
+16:50:25 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:50:25 INFO  : 'fpga -state' command is executed.
+16:50:25 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:50:26 INFO  : Jtag cable 'Digilent Zybo 210279539142A' is selected.
+16:50:26 INFO  : 'jtag frequency' command is executed.
+16:50:26 INFO  : Sourcing of 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl' is done.
+16:50:26 INFO  : Context for 'APU' is selected.
+16:50:26 INFO  : Hardware design information is loaded from 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf'.
+16:50:26 INFO  : Context for 'APU' is selected.
+16:50:26 INFO  : 'stop' command is executed.
+16:50:26 INFO  : 'ps7_init' command is executed.
+16:50:26 INFO  : 'ps7_post_config' command is executed.
+16:50:26 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+loadhw C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+stop
+ps7_init
+ps7_post_config
+----------------End of Script----------------
+
+16:50:26 INFO  : Memory regions updated for context APU
+16:50:27 INFO  : Launch script is exported to file 'C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_dazuoye.elf_on_local.tcl'
+16:52:20 INFO  : Disconnected from the channel tcfchan#1.
+16:52:32 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:52:32 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:52:33 INFO  : FPGA configured successfully with bitstream "C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system_wrapper.bit"
+16:52:41 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:52:41 INFO  : 'fpga -state' command is executed.
+16:52:41 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:52:42 INFO  : Jtag cable 'Digilent Zybo 210279539142A' is selected.
+16:52:42 INFO  : 'jtag frequency' command is executed.
+16:52:42 INFO  : Sourcing of 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl' is done.
+16:52:42 INFO  : Context for 'APU' is selected.
+16:52:42 INFO  : Hardware design information is loaded from 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf'.
+16:52:42 INFO  : Context for 'APU' is selected.
+16:52:42 INFO  : 'stop' command is executed.
+16:52:42 INFO  : 'ps7_init' command is executed.
+16:52:42 INFO  : 'ps7_post_config' command is executed.
+16:52:42 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+loadhw C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+stop
+ps7_init
+ps7_post_config
+----------------End of Script----------------
+
+16:52:42 INFO  : Memory regions updated for context APU
+16:52:42 INFO  : Launch script is exported to file 'C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_dazuoye.elf_on_local.tcl'
+16:53:42 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:53:42 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:53:44 INFO  : FPGA configured successfully with bitstream "C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system_wrapper.bit"
+16:53:52 INFO  : Disconnected from the channel tcfchan#2.
+16:53:54 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:53:54 ERROR : No supported FPGA device found
+16:54:08 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:54:08 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:54:09 INFO  : FPGA configured successfully with bitstream "C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system_wrapper.bit"
+16:54:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:54:18 INFO  : 'fpga -state' command is executed.
+16:54:18 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:54:18 INFO  : Jtag cable 'Digilent Zybo 210279539142A' is selected.
+16:54:18 INFO  : 'jtag frequency' command is executed.
+16:54:18 INFO  : Sourcing of 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl' is done.
+16:54:18 INFO  : Context for 'APU' is selected.
+16:54:18 INFO  : Hardware design information is loaded from 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf'.
+16:54:18 INFO  : Context for 'APU' is selected.
+16:54:18 INFO  : 'stop' command is executed.
+16:54:19 INFO  : 'ps7_init' command is executed.
+16:54:19 INFO  : 'ps7_post_config' command is executed.
+16:54:19 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+loadhw C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+stop
+ps7_init
+ps7_post_config
+----------------End of Script----------------
+
+16:54:19 INFO  : Memory regions updated for context APU
+16:54:19 INFO  : Launch script is exported to file 'C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_dazuoye.elf_on_local.tcl'
+16:55:18 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:55:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:55:19 INFO  : FPGA configured successfully with bitstream "C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system_wrapper.bit"
+16:55:26 INFO  : Disconnected from the channel tcfchan#3.
+16:55:37 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:55:37 INFO  : 'fpga -state' command is executed.
+16:55:37 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:55:37 INFO  : Jtag cable 'Digilent Zybo 210279539142A' is selected.
+16:55:37 INFO  : 'jtag frequency' command is executed.
+16:55:37 INFO  : Sourcing of 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl' is done.
+16:55:37 INFO  : Context for 'APU' is selected.
+16:55:39 INFO  : Hardware design information is loaded from 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf'.
+16:55:39 INFO  : Context for 'APU' is selected.
+16:55:39 INFO  : 'stop' command is executed.
+16:55:39 INFO  : 'ps7_init' command is executed.
+16:55:39 INFO  : 'ps7_post_config' command is executed.
+16:55:39 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+loadhw C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+stop
+ps7_init
+ps7_post_config
+----------------End of Script----------------
+
+16:55:39 INFO  : Memory regions updated for context APU
+16:55:39 INFO  : Launch script is exported to file 'C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_dazuoye.elf_on_local.tcl'
+16:56:43 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:56:43 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:56:44 INFO  : FPGA configured successfully with bitstream "C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system_wrapper.bit"
+16:56:57 INFO  : Disconnected from the channel tcfchan#4.
+16:57:50 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+16:57:50 INFO  : 'fpga -state' command is executed.
+16:57:50 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:57:50 INFO  : Jtag cable 'Digilent Zybo 210279539142A' is selected.
+16:57:50 INFO  : 'jtag frequency' command is executed.
+16:57:50 INFO  : Sourcing of 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl' is done.
+16:57:50 INFO  : Context for 'APU' is selected.
+16:57:50 INFO  : Hardware design information is loaded from 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf'.
+16:57:50 INFO  : Context for 'APU' is selected.
+16:57:50 INFO  : 'stop' command is executed.
+16:57:51 INFO  : 'ps7_init' command is executed.
+16:57:51 INFO  : 'ps7_post_config' command is executed.
+16:57:51 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+loadhw C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+stop
+ps7_init
+ps7_post_config
+----------------End of Script----------------
+
+16:57:51 INFO  : Memory regions updated for context APU
+16:57:51 INFO  : Launch script is exported to file 'C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_dazuoye.elf_on_local.tcl'
+16:58:21 INFO  : Disconnected from the channel tcfchan#5.
+17:00:48 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:00:48 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+17:00:49 INFO  : FPGA configured successfully with bitstream "C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system_wrapper.bit"
+17:01:00 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+17:01:00 INFO  : 'fpga -state' command is executed.
+17:01:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:01:01 INFO  : Jtag cable 'Digilent Zybo 210279539142A' is selected.
+17:01:01 INFO  : 'jtag frequency' command is executed.
+17:01:01 INFO  : Sourcing of 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl' is done.
+17:01:01 INFO  : Context for 'APU' is selected.
+17:01:01 INFO  : Hardware design information is loaded from 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf'.
+17:01:01 INFO  : Context for 'APU' is selected.
+17:01:01 INFO  : 'stop' command is executed.
+17:01:01 INFO  : 'ps7_init' command is executed.
+17:01:01 INFO  : 'ps7_post_config' command is executed.
+17:01:01 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+loadhw C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+stop
+ps7_init
+ps7_post_config
+----------------End of Script----------------
+
+17:01:01 INFO  : Memory regions updated for context APU
+17:01:01 INFO  : Launch script is exported to file 'C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_dazuoye.elf_on_local.tcl'
+17:01:20 INFO  : Disconnected from the channel tcfchan#6.
+17:01:45 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+17:01:45 INFO  : 'fpga -state' command is executed.
+17:01:45 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:01:45 INFO  : Jtag cable 'Digilent Zybo 210279539142A' is selected.
+17:01:45 INFO  : 'jtag frequency' command is executed.
+17:01:45 INFO  : Sourcing of 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl' is done.
+17:01:45 INFO  : Context for 'APU' is selected.
+17:01:45 INFO  : Hardware design information is loaded from 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf'.
+17:01:45 INFO  : Context for 'APU' is selected.
+17:01:45 INFO  : 'stop' command is executed.
+17:01:46 INFO  : 'ps7_init' command is executed.
+17:01:46 INFO  : 'ps7_post_config' command is executed.
+17:01:46 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+loadhw C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+stop
+ps7_init
+ps7_post_config
+----------------End of Script----------------
+
+17:01:46 INFO  : Memory regions updated for context APU
+17:01:46 INFO  : Launch script is exported to file 'C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_dazuoye.elf_on_local.tcl'
+17:02:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:02:12 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+17:02:13 INFO  : FPGA configured successfully with bitstream "C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system_wrapper.bit"
+17:02:20 INFO  : Disconnected from the channel tcfchan#7.
+17:04:05 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:04:05 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+17:04:07 INFO  : FPGA configured successfully with bitstream "C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system_wrapper.bit"
+17:04:15 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent Zybo 210279539142A" && level==0} -index 1' command is executed.
+17:04:15 INFO  : 'fpga -state' command is executed.
+17:04:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:04:16 INFO  : Jtag cable 'Digilent Zybo 210279539142A' is selected.
+17:04:16 INFO  : 'jtag frequency' command is executed.
+17:04:16 INFO  : Sourcing of 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl' is done.
+17:04:16 INFO  : Context for 'APU' is selected.
+17:04:16 INFO  : Hardware design information is loaded from 'C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf'.
+17:04:16 INFO  : Context for 'APU' is selected.
+17:04:16 INFO  : 'stop' command is executed.
+17:04:16 INFO  : 'ps7_init' command is executed.
+17:04:16 INFO  : 'ps7_post_config' command is executed.
+17:04:16 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+source C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/ps7_init.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+loadhw C:/Users/Venci/Desktop/microe/Lab3/x/x.sdk/system_wrapper_hw_platform_0/system.hdf
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "Digilent Zybo 210279539142A"} -index 0
+stop
+ps7_init
+ps7_post_config
+----------------End of Script----------------
+
+17:04:16 INFO  : Memory regions updated for context APU
+17:04:16 INFO  : Launch script is exported to file 'C:\Users\Venci\Desktop\microe\Lab3\x\x.sdk\.sdk\launch_scripts\xilinx_c-c++_application_(system_debugger)\system_debugger_using_debug_dazuoye.elf_on_local.tcl'
+17:04:27 INFO  : Disconnected from the channel tcfchan#8.

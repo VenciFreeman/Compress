@@ -1,0 +1,392 @@
+
+
+================================================================
+== Vivado HLS Report for 'DCT_8x8_2D'
+================================================================
+* Date:           Thu Jan 09 15:26:22 2020
+
+* Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
+* Project:        new
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z010clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  18.00|     15.34|        2.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-------+-------+-------+-------+---------+
+    |    Latency    |    Interval   | Pipeline|
+    |  min  |  max  |  min  |  max  |   Type  |
+    +-------+-------+-------+-------+---------+
+    |  92114|  92450|  92115|  92451|   none  |
+    +-------+-------+-------+-------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+-------+-------+----------+-----------+-----------+------+----------+
+        |             |    Latency    | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |  min  |  max  |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+-------+-------+----------+-----------+-----------+------+----------+
+        |- Loop 1     |    336|    336|        42|          -|          -|     8|    no    |
+        | + Loop 1.1  |     40|     40|         5|          -|          -|     8|    no    |
+        |- Loop 2     |  92112|  92112|     11514|          -|          -|     8|    no    |
+        | + Loop 2.1  |  11512|  11512|      1439|          -|          -|     8|    no    |
+        +-------------+-------+-------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 10
+* Pipeline: 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / (tmp & !exitcond1_i)
+	8  / (!tmp) | (exitcond1_i)
+3 --> 
+	4  / (!exitcond_i)
+	2  / (exitcond_i)
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / true
+7 --> 
+	3  / true
+8 --> 
+	9  / (!exitcond1)
+9 --> 
+	10  / (!exitcond)
+	8  / (exitcond)
+10 --> 
+	9  / true
+* FSM state operations: 
+
+ <State 1>: 2.52ns
+ST_1: StgValue_11 (6)  [1/1] 0.00ns
+:0  call void (...)* @_ssdm_op_SpecBitsMap([64 x float]* %G) nounwind, !map !1226
+
+ST_1: StgValue_12 (7)  [1/1] 0.00ns
+:1  call void (...)* @_ssdm_op_SpecBitsMap([64 x float]* %subimg) nounwind, !map !1232
+
+ST_1: StgValue_13 (8)  [1/1] 0.00ns
+:2  call void (...)* @_ssdm_op_SpecBitsMap(i32 %shift) nounwind, !map !1236
+
+ST_1: StgValue_14 (9)  [1/1] 0.00ns
+:3  call void (...)* @_ssdm_op_SpecBitsMap(i32 %inv) nounwind, !map !1242
+
+ST_1: StgValue_15 (10)  [1/1] 0.00ns
+:4  call void (...)* @_ssdm_op_SpecBitsMap([64 x float]* %cosMat) nounwind, !map !1246
+
+ST_1: StgValue_16 (11)  [1/1] 0.00ns
+:5  call void (...)* @_ssdm_op_SpecTopModule([11 x i8]* @DCT_8x8_2D_str) nounwind
+
+ST_1: inv_read (12)  [1/1] 0.00ns
+:6  %inv_read = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %inv) nounwind
+
+ST_1: shift_read (13)  [1/1] 0.00ns
+:7  %shift_read = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %shift) nounwind
+
+ST_1: tmp (14)  [1/1] 2.52ns  loc: definition.cpp:97
+:8  %tmp = icmp eq i32 %shift_read, 1
+
+ST_1: StgValue_20 (15)  [1/1] 0.00ns  loc: definition.cpp:97
+:9  br i1 %tmp, label %.preheader4.preheader, label %._crit_edge
+
+ST_1: StgValue_21 (17)  [1/1] 1.57ns
+.preheader4.preheader:0  br label %.preheader4
+
+
+ <State 2>: 1.88ns
+ST_2: i_i (19)  [1/1] 0.00ns
+.preheader4:0  %i_i = phi i4 [ %i_1, %.preheader4.loopexit ], [ 0, %.preheader4.preheader ]
+
+ST_2: tmp_s (20)  [1/1] 0.00ns  loc: definition.cpp:88->definition.cpp:98
+.preheader4:1  %tmp_s = call i7 @_ssdm_op_BitConcatenate.i7.i4.i3(i4 %i_i, i3 0)
+
+ST_2: tmp_32_cast (21)  [1/1] 0.00ns  loc: definition.cpp:88->definition.cpp:98
+.preheader4:2  %tmp_32_cast = zext i7 %tmp_s to i8
+
+ST_2: exitcond1_i (22)  [1/1] 1.88ns  loc: definition.cpp:88->definition.cpp:98
+.preheader4:3  %exitcond1_i = icmp eq i4 %i_i, -8
+
+ST_2: empty (23)  [1/1] 0.00ns
+.preheader4:4  %empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 8, i64 8, i64 8) nounwind
+
+ST_2: i_1 (24)  [1/1] 0.80ns  loc: definition.cpp:88->definition.cpp:98
+.preheader4:5  %i_1 = add i4 %i_i, 1
+
+ST_2: StgValue_28 (25)  [1/1] 0.00ns  loc: definition.cpp:88->definition.cpp:98
+.preheader4:6  br i1 %exitcond1_i, label %._crit_edge.loopexit, label %.preheader.i.preheader
+
+ST_2: StgValue_29 (27)  [1/1] 1.57ns  loc: definition.cpp:90->definition.cpp:98
+.preheader.i.preheader:0  br label %.preheader.i
+
+ST_2: StgValue_30 (46)  [1/1] 0.00ns
+._crit_edge.loopexit:0  br label %._crit_edge
+
+ST_2: StgValue_31 (48)  [1/1] 1.57ns  loc: definition.cpp:101
+._crit_edge:0  br label %.loopexit
+
+
+ <State 3>: 4.43ns
+ST_3: j_i (29)  [1/1] 0.00ns
+.preheader.i:0  %j_i = phi i4 [ %j_1, %1 ], [ 0, %.preheader.i.preheader ]
+
+ST_3: j_i_cast3_cast (30)  [1/1] 0.00ns  loc: definition.cpp:90->definition.cpp:98
+.preheader.i:1  %j_i_cast3_cast = zext i4 %j_i to i8
+
+ST_3: tmp_27 (31)  [1/1] 1.72ns  loc: definition.cpp:90->definition.cpp:98
+.preheader.i:2  %tmp_27 = add i8 %tmp_32_cast, %j_i_cast3_cast
+
+ST_3: tmp_33_cast (32)  [1/1] 0.00ns  loc: definition.cpp:90->definition.cpp:98
+.preheader.i:3  %tmp_33_cast = zext i8 %tmp_27 to i32
+
+ST_3: subimg_addr (33)  [1/1] 0.00ns  loc: definition.cpp:90->definition.cpp:98
+.preheader.i:4  %subimg_addr = getelementptr [64 x float]* %subimg, i32 0, i32 %tmp_33_cast
+
+ST_3: exitcond_i (34)  [1/1] 1.88ns  loc: definition.cpp:89->definition.cpp:98
+.preheader.i:5  %exitcond_i = icmp eq i4 %j_i, -8
+
+ST_3: empty_7 (35)  [1/1] 0.00ns
+.preheader.i:6  %empty_7 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 8, i64 8, i64 8) nounwind
+
+ST_3: j_1 (36)  [1/1] 0.80ns  loc: definition.cpp:89->definition.cpp:98
+.preheader.i:7  %j_1 = add i4 %j_i, 1
+
+ST_3: StgValue_40 (37)  [1/1] 0.00ns  loc: definition.cpp:89->definition.cpp:98
+.preheader.i:8  br i1 %exitcond_i, label %.preheader4.loopexit, label %1
+
+ST_3: subimg_load (39)  [2/2] 2.71ns  loc: definition.cpp:90->definition.cpp:98
+:0  %subimg_load = load float* %subimg_addr, align 4
+
+ST_3: StgValue_42 (44)  [1/1] 0.00ns
+.preheader4.loopexit:0  br label %.preheader4
+
+
+ <State 4>: 13.24ns
+ST_4: subimg_load (39)  [1/2] 2.71ns  loc: definition.cpp:90->definition.cpp:98
+:0  %subimg_load = load float* %subimg_addr, align 4
+
+ST_4: tmp_i (40)  [4/4] 10.53ns  loc: definition.cpp:90->definition.cpp:98
+:1  %tmp_i = fadd float %subimg_load, -1.280000e+02
+
+
+ <State 5>: 10.53ns
+ST_5: tmp_i (40)  [3/4] 10.53ns  loc: definition.cpp:90->definition.cpp:98
+:1  %tmp_i = fadd float %subimg_load, -1.280000e+02
+
+
+ <State 6>: 10.53ns
+ST_6: tmp_i (40)  [2/4] 10.53ns  loc: definition.cpp:90->definition.cpp:98
+:1  %tmp_i = fadd float %subimg_load, -1.280000e+02
+
+
+ <State 7>: 13.24ns
+ST_7: tmp_i (40)  [1/4] 10.53ns  loc: definition.cpp:90->definition.cpp:98
+:1  %tmp_i = fadd float %subimg_load, -1.280000e+02
+
+ST_7: StgValue_48 (41)  [1/1] 2.71ns  loc: definition.cpp:90->definition.cpp:98
+:2  store float %tmp_i, float* %subimg_addr, align 4
+
+ST_7: StgValue_49 (42)  [1/1] 0.00ns  loc: definition.cpp:89->definition.cpp:98
+:3  br label %.preheader.i
+
+
+ <State 8>: 1.88ns
+ST_8: i (50)  [1/1] 0.00ns
+.loopexit:0  %i = phi i4 [ 0, %._crit_edge ], [ %i_2, %.loopexit.loopexit ]
+
+ST_8: tmp_28 (51)  [1/1] 0.00ns  loc: definition.cpp:101
+.loopexit:1  %tmp_28 = call i7 @_ssdm_op_BitConcatenate.i7.i4.i3(i4 %i, i3 0)
+
+ST_8: tmp_35_cast (52)  [1/1] 0.00ns  loc: definition.cpp:101
+.loopexit:2  %tmp_35_cast = zext i7 %tmp_28 to i8
+
+ST_8: exitcond1 (53)  [1/1] 1.88ns  loc: definition.cpp:101
+.loopexit:3  %exitcond1 = icmp eq i4 %i, -8
+
+ST_8: empty_8 (54)  [1/1] 0.00ns
+.loopexit:4  %empty_8 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 8, i64 8, i64 8) nounwind
+
+ST_8: i_2 (55)  [1/1] 0.80ns  loc: definition.cpp:101
+.loopexit:5  %i_2 = add i4 %i, 1
+
+ST_8: StgValue_56 (56)  [1/1] 0.00ns  loc: definition.cpp:101
+.loopexit:6  br i1 %exitcond1, label %3, label %.preheader.preheader
+
+ST_8: StgValue_57 (58)  [1/1] 1.57ns  loc: definition.cpp:103
+.preheader.preheader:0  br label %.preheader
+
+ST_8: StgValue_58 (76)  [1/1] 0.00ns  loc: definition.cpp:104
+:0  ret void
+
+
+ <State 9>: 2.52ns
+ST_9: j (60)  [1/1] 0.00ns
+.preheader:0  %j = phi i4 [ %j_2, %2 ], [ 0, %.preheader.preheader ]
+
+ST_9: j_cast1_cast (61)  [1/1] 0.00ns  loc: definition.cpp:103
+.preheader:1  %j_cast1_cast = zext i4 %j to i8
+
+ST_9: tmp_29 (62)  [1/1] 1.72ns  loc: definition.cpp:103
+.preheader:2  %tmp_29 = add i8 %tmp_35_cast, %j_cast1_cast
+
+ST_9: tmp_36_cast (63)  [1/1] 0.00ns  loc: definition.cpp:103
+.preheader:3  %tmp_36_cast = zext i8 %tmp_29 to i32
+
+ST_9: G_addr (64)  [1/1] 0.00ns  loc: definition.cpp:103
+.preheader:4  %G_addr = getelementptr [64 x float]* %G, i32 0, i32 %tmp_36_cast
+
+ST_9: exitcond (65)  [1/1] 1.88ns  loc: definition.cpp:102
+.preheader:5  %exitcond = icmp eq i4 %j, -8
+
+ST_9: empty_9 (66)  [1/1] 0.00ns
+.preheader:6  %empty_9 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 8, i64 8, i64 8) nounwind
+
+ST_9: j_2 (67)  [1/1] 0.80ns  loc: definition.cpp:102
+.preheader:7  %j_2 = add i4 %j, 1
+
+ST_9: StgValue_67 (68)  [1/1] 0.00ns  loc: definition.cpp:102
+.preheader:8  br i1 %exitcond, label %.loopexit.loopexit, label %2
+
+ST_9: tmp_11 (70)  [2/2] 2.52ns  loc: definition.cpp:103
+:0  %tmp_11 = call fastcc float @singleGUV([64 x float]* %subimg, i4 %i, i4 %j, i32 %inv_read, [64 x float]* %cosMat) nounwind
+
+ST_9: StgValue_69 (74)  [1/1] 0.00ns
+.loopexit.loopexit:0  br label %.loopexit
+
+
+ <State 10>: 2.71ns
+ST_10: tmp_11 (70)  [1/2] 0.00ns  loc: definition.cpp:103
+:0  %tmp_11 = call fastcc float @singleGUV([64 x float]* %subimg, i4 %i, i4 %j, i32 %inv_read, [64 x float]* %cosMat) nounwind
+
+ST_10: StgValue_71 (71)  [1/1] 2.71ns  loc: definition.cpp:103
+:1  store float %tmp_11, float* %G_addr, align 4
+
+ST_10: StgValue_72 (72)  [1/1] 0.00ns  loc: definition.cpp:102
+:2  br label %.preheader
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 18ns, clock uncertainty: 2.25ns.
+
+ <State 1>: 2.52ns
+The critical path consists of the following:
+	wire read on port 'shift' [13]  (0 ns)
+	'icmp' operation ('tmp', definition.cpp:97) [14]  (2.52 ns)
+
+ <State 2>: 1.88ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', definition.cpp:88->definition.cpp:98) [19]  (0 ns)
+	'icmp' operation ('exitcond1_i', definition.cpp:88->definition.cpp:98) [22]  (1.88 ns)
+
+ <State 3>: 4.43ns
+The critical path consists of the following:
+	'phi' operation ('j') with incoming values : ('j', definition.cpp:89->definition.cpp:98) [29]  (0 ns)
+	'add' operation ('tmp_27', definition.cpp:90->definition.cpp:98) [31]  (1.72 ns)
+	'getelementptr' operation ('subimg_addr', definition.cpp:90->definition.cpp:98) [33]  (0 ns)
+	'load' operation ('subimg_load', definition.cpp:90->definition.cpp:98) on array 'subimg' [39]  (2.71 ns)
+
+ <State 4>: 13.2ns
+The critical path consists of the following:
+	'load' operation ('subimg_load', definition.cpp:90->definition.cpp:98) on array 'subimg' [39]  (2.71 ns)
+	'fadd' operation ('tmp_i', definition.cpp:90->definition.cpp:98) [40]  (10.5 ns)
+
+ <State 5>: 10.5ns
+The critical path consists of the following:
+	'fadd' operation ('tmp_i', definition.cpp:90->definition.cpp:98) [40]  (10.5 ns)
+
+ <State 6>: 10.5ns
+The critical path consists of the following:
+	'fadd' operation ('tmp_i', definition.cpp:90->definition.cpp:98) [40]  (10.5 ns)
+
+ <State 7>: 13.2ns
+The critical path consists of the following:
+	'fadd' operation ('tmp_i', definition.cpp:90->definition.cpp:98) [40]  (10.5 ns)
+	'store' operation (definition.cpp:90->definition.cpp:98) of variable 'tmp_i', definition.cpp:90->definition.cpp:98 on array 'subimg' [41]  (2.71 ns)
+
+ <State 8>: 1.88ns
+The critical path consists of the following:
+	'phi' operation ('i') with incoming values : ('i', definition.cpp:101) [50]  (0 ns)
+	'icmp' operation ('exitcond1', definition.cpp:101) [53]  (1.88 ns)
+
+ <State 9>: 2.52ns
+The critical path consists of the following:
+	'phi' operation ('j') with incoming values : ('j', definition.cpp:102) [60]  (0 ns)
+	'call' operation ('tmp_11', definition.cpp:103) to 'singleGUV' [70]  (2.52 ns)
+
+ <State 10>: 2.71ns
+The critical path consists of the following:
+	'call' operation ('tmp_11', definition.cpp:103) to 'singleGUV' [70]  (0 ns)
+	'store' operation (definition.cpp:103) of variable 'tmp_11', definition.cpp:103 on array 'G' [71]  (2.71 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

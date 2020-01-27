@@ -1,0 +1,1 @@
+design_1.vhd,vhdl,xil_defaultlib,../../../bd/design_1/hdl/design_1.vhd,

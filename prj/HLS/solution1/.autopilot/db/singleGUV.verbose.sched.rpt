@@ -1,0 +1,714 @@
+
+
+================================================================
+== Vivado HLS Report for 'singleGUV'
+================================================================
+* Date:           Thu Jan 09 15:26:20 2020
+
+* Version:        2016.4 (Build 1756540 on Mon Jan 23 19:31:01 MST 2017)
+* Project:        new
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z010clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  18.00|     15.34|        2.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +------+------+------+------+---------+
+    |   Latency   |   Interval  | Pipeline|
+    |  min |  max |  min |  max |   Type  |
+    +------+------+------+------+---------+
+    |  1437|  1437|  1437|  1437|   none  |
+    +------+------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+        |             |   Latency   | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |  min |  max |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+        |- Loop 1     |  1432|  1432|       179|          -|          -|     8|    no    |
+        | + Loop 1.1  |   176|   176|        22|          -|          -|     8|    no    |
+        +-------------+------+------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 29
+* Pipeline: 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / true
+3 --> 
+	4  / true
+4 --> 
+	5  / true
+5 --> 
+	6  / true
+6 --> 
+	7  / (!exitcond1)
+7 --> 
+	8  / true
+8 --> 
+	9  / (!exitcond)
+	6  / (exitcond)
+9 --> 
+	10  / true
+10 --> 
+	11  / true
+11 --> 
+	12  / true
+12 --> 
+	13  / true
+13 --> 
+	14  / true
+14 --> 
+	15  / true
+15 --> 
+	16  / true
+16 --> 
+	17  / true
+17 --> 
+	18  / true
+18 --> 
+	19  / true
+19 --> 
+	20  / true
+20 --> 
+	21  / true
+21 --> 
+	22  / true
+22 --> 
+	23  / true
+23 --> 
+	24  / true
+24 --> 
+	25  / true
+25 --> 
+	26  / true
+26 --> 
+	27  / true
+27 --> 
+	28  / true
+28 --> 
+	29  / true
+29 --> 
+	8  / true
+* FSM state operations: 
+
+ <State 1>: 2.52ns
+ST_1: G (6)  [1/1] 0.00ns
+:0  %G = alloca float
+
+ST_1: inv_read (7)  [1/1] 0.00ns
+:1  %inv_read = call i32 @_ssdm_op_Read.ap_auto.i32(i32 %inv)
+
+ST_1: v_read (8)  [1/1] 0.00ns
+:2  %v_read = call i4 @_ssdm_op_Read.ap_auto.i4(i4 %v)
+
+ST_1: u_read (9)  [1/1] 0.00ns
+:3  %u_read = call i4 @_ssdm_op_Read.ap_auto.i4(i4 %u)
+
+ST_1: tmp (16)  [1/1] 2.52ns  loc: definition.cpp:75
+:10  %tmp = icmp eq i32 %inv_read, 0
+
+ST_1: tmp_i (17)  [1/1] 1.88ns  loc: definition.cpp:62->definition.cpp:76
+:11  %tmp_i = icmp eq i4 %u_read, 0
+
+ST_1: tmp_i1 (19)  [1/1] 1.88ns  loc: definition.cpp:62->definition.cpp:76
+:13  %tmp_i1 = icmp eq i4 %v_read, 0
+
+ST_1: StgValue_37 (22)  [1/1] 1.57ns
+:16  store float 0.000000e+00, float* %G
+
+
+ <State 2>: 15.34ns
+ST_2: tmp_4 (18)  [1/1] 1.37ns  loc: definition.cpp:76
+:12  %tmp_4 = select i1 %tmp_i, double 0x3FC6A09E60000000, double 2.500000e-01
+
+ST_2: tmp_6 (20)  [1/1] 1.37ns  loc: definition.cpp:76
+:14  %tmp_6 = select i1 %tmp_i1, double 0x3FE6A09E60000000, double 1.000000e+00
+
+ST_2: tmp_7 (21)  [4/4] 13.97ns  loc: definition.cpp:76
+:15  %tmp_7 = fmul double %tmp_4, %tmp_6
+
+
+ <State 3>: 13.97ns
+ST_3: tmp_7 (21)  [3/4] 13.97ns  loc: definition.cpp:76
+:15  %tmp_7 = fmul double %tmp_4, %tmp_6
+
+
+ <State 4>: 13.97ns
+ST_4: tmp_7 (21)  [2/4] 13.97ns  loc: definition.cpp:76
+:15  %tmp_7 = fmul double %tmp_4, %tmp_6
+
+
+ <State 5>: 13.97ns
+ST_5: v_cast2_cast (10)  [1/1] 0.00ns
+:4  %v_cast2_cast = zext i4 %v_read to i8
+
+ST_5: tmp_18 (11)  [1/1] 0.00ns
+:5  %tmp_18 = call i7 @_ssdm_op_BitConcatenate.i7.i4.i3(i4 %v_read, i3 0)
+
+ST_5: tmp_19_cast (12)  [1/1] 0.00ns
+:6  %tmp_19_cast = zext i7 %tmp_18 to i8
+
+ST_5: u_cast1_cast (13)  [1/1] 0.00ns
+:7  %u_cast1_cast = zext i4 %u_read to i8
+
+ST_5: tmp_19 (14)  [1/1] 0.00ns
+:8  %tmp_19 = call i7 @_ssdm_op_BitConcatenate.i7.i4.i3(i4 %u_read, i3 0)
+
+ST_5: tmp_21_cast (15)  [1/1] 0.00ns
+:9  %tmp_21_cast = zext i7 %tmp_19 to i8
+
+ST_5: tmp_7 (21)  [1/4] 13.97ns  loc: definition.cpp:76
+:15  %tmp_7 = fmul double %tmp_4, %tmp_6
+
+ST_5: StgValue_50 (23)  [1/1] 1.57ns  loc: definition.cpp:73
+:17  br label %.loopexit
+
+
+ <State 6>: 4.43ns
+ST_6: x_assign (25)  [1/1] 0.00ns
+.loopexit:0  %x_assign = phi i4 [ 0, %0 ], [ %x, %.loopexit.loopexit ]
+
+ST_6: x_assign_cast2_cast (26)  [1/1] 0.00ns  loc: definition.cpp:73
+.loopexit:1  %x_assign_cast2_cast = zext i4 %x_assign to i8
+
+ST_6: tmp_20 (27)  [1/1] 0.00ns  loc: definition.cpp:73
+.loopexit:2  %tmp_20 = call i7 @_ssdm_op_BitConcatenate.i7.i4.i3(i4 %x_assign, i3 0)
+
+ST_6: tmp_23_cast (28)  [1/1] 0.00ns  loc: definition.cpp:76
+.loopexit:3  %tmp_23_cast = zext i7 %tmp_20 to i8
+
+ST_6: tmp_21 (29)  [1/1] 1.72ns  loc: definition.cpp:76
+.loopexit:4  %tmp_21 = add i8 %x_assign_cast2_cast, %tmp_21_cast
+
+ST_6: tmp_24_cast (30)  [1/1] 0.00ns  loc: definition.cpp:76
+.loopexit:5  %tmp_24_cast = zext i8 %tmp_21 to i32
+
+ST_6: cosMat_addr (31)  [1/1] 0.00ns  loc: definition.cpp:76
+.loopexit:6  %cosMat_addr = getelementptr [64 x float]* %cosMat, i32 0, i32 %tmp_24_cast
+
+ST_6: tmp_22 (32)  [1/1] 1.72ns  loc: definition.cpp:78
+.loopexit:7  %tmp_22 = add i8 %u_cast1_cast, %tmp_23_cast
+
+ST_6: tmp_25_cast (33)  [1/1] 0.00ns  loc: definition.cpp:78
+.loopexit:8  %tmp_25_cast = zext i8 %tmp_22 to i32
+
+ST_6: cosMat_addr_1 (34)  [1/1] 0.00ns  loc: definition.cpp:78
+.loopexit:9  %cosMat_addr_1 = getelementptr [64 x float]* %cosMat, i32 0, i32 %tmp_25_cast
+
+ST_6: exitcond1 (35)  [1/1] 1.88ns  loc: definition.cpp:73
+.loopexit:10  %exitcond1 = icmp eq i4 %x_assign, -8
+
+ST_6: empty (36)  [1/1] 0.00ns
+.loopexit:11  %empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 8, i64 8, i64 8)
+
+ST_6: x (37)  [1/1] 0.80ns  loc: definition.cpp:73
+.loopexit:12  %x = add i4 %x_assign, 1
+
+ST_6: StgValue_64 (38)  [1/1] 0.00ns  loc: definition.cpp:73
+.loopexit:13  br i1 %exitcond1, label %1, label %.preheader.preheader
+
+ST_6: cosMat_load (40)  [2/2] 2.71ns  loc: definition.cpp:76
+.preheader.preheader:0  %cosMat_load = load float* %cosMat_addr, align 4
+
+ST_6: tmp_i2 (42)  [1/1] 1.88ns  loc: definition.cpp:62->definition.cpp:78
+.preheader.preheader:2  %tmp_i2 = icmp eq i4 %x_assign, 0
+
+ST_6: cosMat_load_2 (44)  [2/2] 2.71ns  loc: definition.cpp:78
+.preheader.preheader:4  %cosMat_load_2 = load float* %cosMat_addr_1, align 4
+
+ST_6: G_load (91)  [1/1] 0.00ns  loc: definition.cpp:81
+:0  %G_load = load float* %G
+
+ST_6: StgValue_69 (92)  [1/1] 0.00ns  loc: definition.cpp:81
+:1  ret float %G_load
+
+
+ <State 7>: 8.26ns
+ST_7: cosMat_load (40)  [1/2] 2.71ns  loc: definition.cpp:76
+.preheader.preheader:0  %cosMat_load = load float* %cosMat_addr, align 4
+
+ST_7: tmp_s (41)  [1/1] 5.55ns  loc: definition.cpp:76
+.preheader.preheader:1  %tmp_s = fpext float %cosMat_load to double
+
+ST_7: tmp_2 (43)  [1/1] 1.37ns  loc: definition.cpp:78
+.preheader.preheader:3  %tmp_2 = select i1 %tmp_i2, double 0x3FC6A09E60000000, double 2.500000e-01
+
+ST_7: cosMat_load_2 (44)  [1/2] 2.71ns  loc: definition.cpp:78
+.preheader.preheader:4  %cosMat_load_2 = load float* %cosMat_addr_1, align 4
+
+ST_7: tmp_3 (45)  [1/1] 5.55ns  loc: definition.cpp:78
+.preheader.preheader:5  %tmp_3 = fpext float %cosMat_load_2 to double
+
+ST_7: StgValue_75 (46)  [1/1] 1.57ns  loc: definition.cpp:74
+.preheader.preheader:6  br label %.preheader
+
+
+ <State 8>: 4.43ns
+ST_8: x_assign_1 (48)  [1/1] 0.00ns
+.preheader:0  %x_assign_1 = phi i4 [ %y, %_ifconv ], [ 0, %.preheader.preheader ]
+
+ST_8: x_assign_1_cast1_cas (49)  [1/1] 0.00ns  loc: definition.cpp:76
+.preheader:1  %x_assign_1_cast1_cas = zext i4 %x_assign_1 to i8
+
+ST_8: tmp_23 (50)  [1/1] 1.72ns  loc: definition.cpp:76
+.preheader:2  %tmp_23 = add i8 %x_assign_1_cast1_cas, %tmp_23_cast
+
+ST_8: tmp_26_cast (51)  [1/1] 0.00ns  loc: definition.cpp:76
+.preheader:3  %tmp_26_cast = zext i8 %tmp_23 to i32
+
+ST_8: subimg_addr (52)  [1/1] 0.00ns  loc: definition.cpp:76
+.preheader:4  %subimg_addr = getelementptr [64 x float]* %subimg, i32 0, i32 %tmp_26_cast
+
+ST_8: tmp_24 (53)  [1/1] 1.72ns  loc: definition.cpp:76
+.preheader:5  %tmp_24 = add i8 %x_assign_1_cast1_cas, %tmp_19_cast
+
+ST_8: tmp_27_cast (54)  [1/1] 0.00ns  loc: definition.cpp:76
+.preheader:6  %tmp_27_cast = zext i8 %tmp_24 to i32
+
+ST_8: cosMat_addr_2 (55)  [1/1] 0.00ns  loc: definition.cpp:76
+.preheader:7  %cosMat_addr_2 = getelementptr [64 x float]* %cosMat, i32 0, i32 %tmp_27_cast
+
+ST_8: tmp_25 (56)  [1/1] 0.00ns  loc: definition.cpp:74
+.preheader:8  %tmp_25 = call i7 @_ssdm_op_BitConcatenate.i7.i4.i3(i4 %x_assign_1, i3 0)
+
+ST_8: tmp_29_cast (57)  [1/1] 0.00ns  loc: definition.cpp:78
+.preheader:9  %tmp_29_cast = zext i7 %tmp_25 to i8
+
+ST_8: tmp_26 (58)  [1/1] 1.72ns  loc: definition.cpp:78
+.preheader:10  %tmp_26 = add i8 %v_cast2_cast, %tmp_29_cast
+
+ST_8: tmp_30_cast (59)  [1/1] 0.00ns  loc: definition.cpp:78
+.preheader:11  %tmp_30_cast = zext i8 %tmp_26 to i32
+
+ST_8: cosMat_addr_3 (60)  [1/1] 0.00ns  loc: definition.cpp:78
+.preheader:12  %cosMat_addr_3 = getelementptr [64 x float]* %cosMat, i32 0, i32 %tmp_30_cast
+
+ST_8: exitcond (61)  [1/1] 1.88ns  loc: definition.cpp:74
+.preheader:13  %exitcond = icmp eq i4 %x_assign_1, -8
+
+ST_8: empty_3 (62)  [1/1] 0.00ns
+.preheader:14  %empty_3 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 8, i64 8, i64 8)
+
+ST_8: y (63)  [1/1] 0.80ns  loc: definition.cpp:74
+.preheader:15  %y = add i4 %x_assign_1, 1
+
+ST_8: StgValue_92 (64)  [1/1] 0.00ns  loc: definition.cpp:74
+.preheader:16  br i1 %exitcond, label %.loopexit.loopexit, label %_ifconv
+
+ST_8: subimg_load (67)  [2/2] 2.71ns  loc: definition.cpp:76
+_ifconv:1  %subimg_load = load float* %subimg_addr, align 4
+
+ST_8: tmp_i3 (75)  [1/1] 1.88ns  loc: definition.cpp:62->definition.cpp:78
+_ifconv:9  %tmp_i3 = icmp eq i4 %x_assign_1, 0
+
+ST_8: StgValue_95 (89)  [1/1] 0.00ns
+.loopexit.loopexit:0  br label %.loopexit
+
+
+ <State 9>: 15.34ns
+ST_9: subimg_load (67)  [1/2] 2.71ns  loc: definition.cpp:76
+_ifconv:1  %subimg_load = load float* %subimg_addr, align 4
+
+ST_9: tmp_8 (68)  [1/1] 5.55ns  loc: definition.cpp:76
+_ifconv:2  %tmp_8 = fpext float %subimg_load to double
+
+ST_9: tmp_12 (76)  [1/1] 1.37ns  loc: definition.cpp:78
+_ifconv:10  %tmp_12 = select i1 %tmp_i3, double 0x3FE6A09E60000000, double 1.000000e+00
+
+ST_9: tmp_13 (77)  [4/4] 13.97ns  loc: definition.cpp:78
+_ifconv:11  %tmp_13 = fmul double %tmp_2, %tmp_12
+
+
+ <State 10>: 13.97ns
+ST_10: tmp_9 (69)  [4/4] 13.97ns  loc: definition.cpp:76
+_ifconv:3  %tmp_9 = fmul double %tmp_7, %tmp_8
+
+ST_10: tmp_13 (77)  [3/4] 13.97ns  loc: definition.cpp:78
+_ifconv:11  %tmp_13 = fmul double %tmp_2, %tmp_12
+
+
+ <State 11>: 13.97ns
+ST_11: tmp_9 (69)  [3/4] 13.97ns  loc: definition.cpp:76
+_ifconv:3  %tmp_9 = fmul double %tmp_7, %tmp_8
+
+ST_11: tmp_13 (77)  [2/4] 13.97ns  loc: definition.cpp:78
+_ifconv:11  %tmp_13 = fmul double %tmp_2, %tmp_12
+
+
+ <State 12>: 13.97ns
+ST_12: tmp_9 (69)  [2/4] 13.97ns  loc: definition.cpp:76
+_ifconv:3  %tmp_9 = fmul double %tmp_7, %tmp_8
+
+ST_12: tmp_13 (77)  [1/4] 13.97ns  loc: definition.cpp:78
+_ifconv:11  %tmp_13 = fmul double %tmp_2, %tmp_12
+
+
+ <State 13>: 13.97ns
+ST_13: tmp_9 (69)  [1/4] 13.97ns  loc: definition.cpp:76
+_ifconv:3  %tmp_9 = fmul double %tmp_7, %tmp_8
+
+ST_13: tmp_14 (78)  [4/4] 13.97ns  loc: definition.cpp:78
+_ifconv:12  %tmp_14 = fmul double %tmp_13, %tmp_8
+
+
+ <State 14>: 13.97ns
+ST_14: tmp_1 (70)  [4/4] 13.97ns  loc: definition.cpp:76
+_ifconv:4  %tmp_1 = fmul double %tmp_9, %tmp_s
+
+ST_14: tmp_14 (78)  [3/4] 13.97ns  loc: definition.cpp:78
+_ifconv:12  %tmp_14 = fmul double %tmp_13, %tmp_8
+
+
+ <State 15>: 13.97ns
+ST_15: tmp_1 (70)  [3/4] 13.97ns  loc: definition.cpp:76
+_ifconv:4  %tmp_1 = fmul double %tmp_9, %tmp_s
+
+ST_15: tmp_14 (78)  [2/4] 13.97ns  loc: definition.cpp:78
+_ifconv:12  %tmp_14 = fmul double %tmp_13, %tmp_8
+
+
+ <State 16>: 13.97ns
+ST_16: tmp_1 (70)  [2/4] 13.97ns  loc: definition.cpp:76
+_ifconv:4  %tmp_1 = fmul double %tmp_9, %tmp_s
+
+ST_16: cosMat_load_1 (71)  [2/2] 2.71ns  loc: definition.cpp:76
+_ifconv:5  %cosMat_load_1 = load float* %cosMat_addr_2, align 4
+
+ST_16: tmp_14 (78)  [1/4] 13.97ns  loc: definition.cpp:78
+_ifconv:12  %tmp_14 = fmul double %tmp_13, %tmp_8
+
+
+ <State 17>: 13.97ns
+ST_17: tmp_1 (70)  [1/4] 13.97ns  loc: definition.cpp:76
+_ifconv:4  %tmp_1 = fmul double %tmp_9, %tmp_s
+
+ST_17: cosMat_load_1 (71)  [1/2] 2.71ns  loc: definition.cpp:76
+_ifconv:5  %cosMat_load_1 = load float* %cosMat_addr_2, align 4
+
+ST_17: tmp_5 (72)  [1/1] 5.55ns  loc: definition.cpp:76
+_ifconv:6  %tmp_5 = fpext float %cosMat_load_1 to double
+
+ST_17: tmp_15 (79)  [4/4] 13.97ns  loc: definition.cpp:78
+_ifconv:13  %tmp_15 = fmul double %tmp_14, %tmp_3
+
+
+ <State 18>: 13.97ns
+ST_18: tmp_10 (73)  [4/4] 13.97ns  loc: definition.cpp:76
+_ifconv:7  %tmp_10 = fmul double %tmp_1, %tmp_5
+
+ST_18: tmp_15 (79)  [3/4] 13.97ns  loc: definition.cpp:78
+_ifconv:13  %tmp_15 = fmul double %tmp_14, %tmp_3
+
+
+ <State 19>: 13.97ns
+ST_19: tmp_10 (73)  [3/4] 13.97ns  loc: definition.cpp:76
+_ifconv:7  %tmp_10 = fmul double %tmp_1, %tmp_5
+
+ST_19: tmp_15 (79)  [2/4] 13.97ns  loc: definition.cpp:78
+_ifconv:13  %tmp_15 = fmul double %tmp_14, %tmp_3
+
+ST_19: cosMat_load_3 (80)  [2/2] 2.71ns  loc: definition.cpp:78
+_ifconv:14  %cosMat_load_3 = load float* %cosMat_addr_3, align 4
+
+
+ <State 20>: 13.97ns
+ST_20: tmp_10 (73)  [2/4] 13.97ns  loc: definition.cpp:76
+_ifconv:7  %tmp_10 = fmul double %tmp_1, %tmp_5
+
+ST_20: tmp_15 (79)  [1/4] 13.97ns  loc: definition.cpp:78
+_ifconv:13  %tmp_15 = fmul double %tmp_14, %tmp_3
+
+ST_20: cosMat_load_3 (80)  [1/2] 2.71ns  loc: definition.cpp:78
+_ifconv:14  %cosMat_load_3 = load float* %cosMat_addr_3, align 4
+
+ST_20: tmp_16 (81)  [1/1] 5.55ns  loc: definition.cpp:78
+_ifconv:15  %tmp_16 = fpext float %cosMat_load_3 to double
+
+
+ <State 21>: 13.97ns
+ST_21: tmp_10 (73)  [1/4] 13.97ns  loc: definition.cpp:76
+_ifconv:7  %tmp_10 = fmul double %tmp_1, %tmp_5
+
+ST_21: tmp_17 (82)  [4/4] 13.97ns  loc: definition.cpp:78
+_ifconv:16  %tmp_17 = fmul double %tmp_15, %tmp_16
+
+
+ <State 22>: 13.97ns
+ST_22: tmp_17 (82)  [3/4] 13.97ns  loc: definition.cpp:78
+_ifconv:16  %tmp_17 = fmul double %tmp_15, %tmp_16
+
+
+ <State 23>: 13.97ns
+ST_23: tmp_17 (82)  [2/4] 13.97ns  loc: definition.cpp:78
+_ifconv:16  %tmp_17 = fmul double %tmp_15, %tmp_16
+
+
+ <State 24>: 15.34ns
+ST_24: G_load_1 (66)  [1/1] 0.00ns  loc: definition.cpp:76
+_ifconv:0  %G_load_1 = load float* %G
+
+ST_24: tmp_11 (74)  [1/1] 5.55ns  loc: definition.cpp:76
+_ifconv:8  %tmp_11 = fpext float %G_load_1 to double
+
+ST_24: tmp_17 (82)  [1/4] 13.97ns  loc: definition.cpp:78
+_ifconv:16  %tmp_17 = fmul double %tmp_15, %tmp_16
+
+ST_24: G_2_in_v (83)  [1/1] 1.37ns  loc: definition.cpp:75
+_ifconv:17  %G_2_in_v = select i1 %tmp, double %tmp_10, double %tmp_17
+
+
+ <State 25>: 14.77ns
+ST_25: G_2_in (84)  [4/4] 14.77ns  loc: definition.cpp:76
+_ifconv:18  %G_2_in = fadd double %tmp_11, %G_2_in_v
+
+
+ <State 26>: 14.77ns
+ST_26: G_2_in (84)  [3/4] 14.77ns  loc: definition.cpp:76
+_ifconv:18  %G_2_in = fadd double %tmp_11, %G_2_in_v
+
+
+ <State 27>: 14.77ns
+ST_27: G_2_in (84)  [2/4] 14.77ns  loc: definition.cpp:76
+_ifconv:18  %G_2_in = fadd double %tmp_11, %G_2_in_v
+
+
+ <State 28>: 14.77ns
+ST_28: G_2_in (84)  [1/4] 14.77ns  loc: definition.cpp:76
+_ifconv:18  %G_2_in = fadd double %tmp_11, %G_2_in_v
+
+
+ <State 29>: 8.07ns
+ST_29: G_1 (85)  [1/1] 6.50ns  loc: definition.cpp:76
+_ifconv:19  %G_1 = fptrunc double %G_2_in to float
+
+ST_29: StgValue_141 (86)  [1/1] 1.57ns  loc: definition.cpp:76
+_ifconv:20  store float %G_1, float* %G
+
+ST_29: StgValue_142 (87)  [1/1] 0.00ns  loc: definition.cpp:74
+_ifconv:21  br label %.preheader
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 18ns, clock uncertainty: 2.25ns.
+
+ <State 1>: 2.52ns
+The critical path consists of the following:
+	wire read on port 'inv' [7]  (0 ns)
+	'icmp' operation ('tmp', definition.cpp:75) [16]  (2.52 ns)
+
+ <State 2>: 15.3ns
+The critical path consists of the following:
+	'select' operation ('tmp_4', definition.cpp:76) [18]  (1.37 ns)
+	'dmul' operation ('tmp_7', definition.cpp:76) [21]  (14 ns)
+
+ <State 3>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_7', definition.cpp:76) [21]  (14 ns)
+
+ <State 4>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_7', definition.cpp:76) [21]  (14 ns)
+
+ <State 5>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_7', definition.cpp:76) [21]  (14 ns)
+
+ <State 6>: 4.43ns
+The critical path consists of the following:
+	'phi' operation ('x') with incoming values : ('x', definition.cpp:73) [25]  (0 ns)
+	'add' operation ('tmp_22', definition.cpp:78) [32]  (1.72 ns)
+	'getelementptr' operation ('cosMat_addr_1', definition.cpp:78) [34]  (0 ns)
+	'load' operation ('cosMat_load_2', definition.cpp:78) on array 'cosMat' [44]  (2.71 ns)
+
+ <State 7>: 8.26ns
+The critical path consists of the following:
+	'load' operation ('cosMat_load', definition.cpp:76) on array 'cosMat' [40]  (2.71 ns)
+	'fpext' operation ('tmp_s', definition.cpp:76) [41]  (5.55 ns)
+
+ <State 8>: 4.43ns
+The critical path consists of the following:
+	'phi' operation ('y') with incoming values : ('y', definition.cpp:74) [48]  (0 ns)
+	'add' operation ('tmp_23', definition.cpp:76) [50]  (1.72 ns)
+	'getelementptr' operation ('subimg_addr', definition.cpp:76) [52]  (0 ns)
+	'load' operation ('subimg_load', definition.cpp:76) on array 'subimg' [67]  (2.71 ns)
+
+ <State 9>: 15.3ns
+The critical path consists of the following:
+	'select' operation ('tmp_12', definition.cpp:78) [76]  (1.37 ns)
+	'dmul' operation ('tmp_13', definition.cpp:78) [77]  (14 ns)
+
+ <State 10>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_9', definition.cpp:76) [69]  (14 ns)
+
+ <State 11>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_9', definition.cpp:76) [69]  (14 ns)
+
+ <State 12>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_9', definition.cpp:76) [69]  (14 ns)
+
+ <State 13>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_9', definition.cpp:76) [69]  (14 ns)
+
+ <State 14>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_1', definition.cpp:76) [70]  (14 ns)
+
+ <State 15>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_1', definition.cpp:76) [70]  (14 ns)
+
+ <State 16>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_1', definition.cpp:76) [70]  (14 ns)
+
+ <State 17>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_1', definition.cpp:76) [70]  (14 ns)
+
+ <State 18>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_10', definition.cpp:76) [73]  (14 ns)
+
+ <State 19>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_10', definition.cpp:76) [73]  (14 ns)
+
+ <State 20>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_10', definition.cpp:76) [73]  (14 ns)
+
+ <State 21>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_10', definition.cpp:76) [73]  (14 ns)
+
+ <State 22>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_17', definition.cpp:78) [82]  (14 ns)
+
+ <State 23>: 14ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_17', definition.cpp:78) [82]  (14 ns)
+
+ <State 24>: 15.3ns
+The critical path consists of the following:
+	'dmul' operation ('tmp_17', definition.cpp:78) [82]  (14 ns)
+	'select' operation ('G_2_in_v', definition.cpp:75) [83]  (1.37 ns)
+
+ <State 25>: 14.8ns
+The critical path consists of the following:
+	'dadd' operation ('G_2_in', definition.cpp:76) [84]  (14.8 ns)
+
+ <State 26>: 14.8ns
+The critical path consists of the following:
+	'dadd' operation ('G_2_in', definition.cpp:76) [84]  (14.8 ns)
+
+ <State 27>: 14.8ns
+The critical path consists of the following:
+	'dadd' operation ('G_2_in', definition.cpp:76) [84]  (14.8 ns)
+
+ <State 28>: 14.8ns
+The critical path consists of the following:
+	'dadd' operation ('G_2_in', definition.cpp:76) [84]  (14.8 ns)
+
+ <State 29>: 8.07ns
+The critical path consists of the following:
+	'fptrunc' operation ('G', definition.cpp:76) [85]  (6.5 ns)
+	'store' operation (definition.cpp:76) of variable 'G', definition.cpp:76 on local variable 'G' [86]  (1.57 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+	State 26
+	State 27
+	State 28
+	State 29
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
