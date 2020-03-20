@@ -9,7 +9,7 @@
 
 #### 初始选题
 
-> Google 的 Guetzli 图像压缩开源项目
+> Google 的 [Guetzli]( https://github.com/VenciFreeman/Guetzli ) 图像压缩开源项目
 
 ##### 面临的问题
 
@@ -101,11 +101,11 @@
 
 #### 项目分工
 
-|     组员      |             HLS             |     嵌入式      |
-| :-----------: | :-------------------------: | :-------------: |
-| @VenciFreeman | 文件预处理，色域转换，debug |      debug      |
-|               |     DCT/IDCT，辅助函数      | 代码修改、debug |
-|               |  testbench，Directive优化   |  — (因伤退出)   |
+|    组员     |                          GitHub                          |             HLS             |     嵌入式      |
+| :---------: | :------------------------------------------------------: | :-------------------------: | :-------------: |
+| Yang Wenxi  |   [**@VenciFreeman**](https://github.com/VenciFreeman)   | 文件预处理，色域转换，debug |      debug      |
+|  Luo Tian   |   [**@luotian12345**](https://github.com/luotian12345)   |     DCT/IDCT，辅助函数      | 代码修改、debug |
+| Liu Jianwei | [**@liujianwei0225**](https://github.com/liujianwei0225) |  testbench，Directive优化   |  — (因伤退出)   |
 
 ## 实施过程
 
@@ -333,11 +333,11 @@ fclose()
 
 ## 参考文献
 
-- Alakuijala, Jyrki, et al. "Guetzli: Perceptually guided jpeg encoder." arXiv preprint arXiv: 
-  1703.04421 (2017). 
+- [Alakuijala, Jyrki, et al. "Guetzli: Perceptually guided jpeg encoder." arXiv preprint arXiv: 
+  1703.04421 (2017).]( https://arxiv.org/abs/1703.04421 )
 - Fu, Sizhe, Ping Shi, and Da Pan. "A modified algorithm of Guetzli encoder." 2018 IEEE 4th 
   Information Technology and Mechatronics Engineering Conference (ITOEC). IEEE, 2018. 
-- Hudson, Graham, et al. "JPEG-1 standard 25 years: past, present, and future reasons for a 
-  success." Journal of Electronic Imaging 27.4 (2018): 040901. 
-- RGB, https://en.wikipedia.org/wiki/RGB 
-- YCbCr, https://en.wikipedia.org/wiki/YCbCr 
+- [Hudson, Graham, et al. "JPEG-1 standard 25 years: past, present, and future reasons for a 
+  success." Journal of Electronic Imaging 27.4 (2018): 040901.]( https://www.spiedigitallibrary.org/journals/journal-of-electronic-imaging/volume-27/issue-04/040901/JPEG-1-standard-25-years--past-present-and-future/10.1117/1.JEI.27.4.040901.full?SSO=1 )
+- [RGB](https://en.wikipedia.org/wiki/RGB) 
+- [YCbCr](https://en.wikipedia.org/wiki/YCbCr)
