@@ -9,7 +9,7 @@
 
 #### 初始选题
 
-> Google 的 [Guetzli]( https://github.com/VenciFreeman/Guetzli ) 图像压缩开源项目
+> Google [Guetzli]( https://github.com/VenciFreeman/Guetzli ) 图像压缩开源项目
 
 ##### 面临的问题
 
@@ -101,11 +101,11 @@
 
 #### 项目分工
 
-|    组员     |                          GitHub                          |             HLS             |     嵌入式      |
-| :---------: | :------------------------------------------------------: | :-------------------------: | :-------------: |
-| Yang Wenxi  |   [**@VenciFreeman**](https://github.com/VenciFreeman)   | 文件预处理，色域转换，debug |      debug      |
-|  Luo Tian   |   [**@luotian12345**](https://github.com/luotian12345)   |     DCT/IDCT，辅助函数      | 代码修改、debug |
-| Liu Jianwei | [**@liujianwei0225**](https://github.com/liujianwei0225) |  testbench，Directive优化   |  — (因伤退出)   |
+|                         组员                             |             HLS             |     嵌入式      |
+| :------------------------------------------------------: | :-------------------------: | :-------------: |
+|   [**Venci Freeman**](https://github.com/VenciFreeman)   | 文件预处理，色域转换，debug |      debug      |
+|   [**Luo Tian**](https://github.com/luotian12345)        |     DCT/IDCT，辅助函数      | 代码修改、debug |
+| [**Liu Jianwei**](https://github.com/liujianwei0225)     |  testbench，Directive优化   |  — (因伤退出)   |
 
 ## 实施过程
 
