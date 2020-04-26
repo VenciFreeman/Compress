@@ -1,177 +1,176 @@
 # Compress
-> Micro-nano system integrated design Project based on Zybo development board, A simple algorithm which can compress images.
+> A simple image compression algorithm written in C++, and embedded implementation on Zynq.
 
  ![Generic badge](https://img.shields.io/badge/Language-C++-red.svg) [![Generic badge](https://img.shields.io/badge/Hardware-Zynq-orange.svg)](https://github.com/VenciFreeman/ZynqPrj) [![Generic badge](https://img.shields.io/badge/Deadline-Jan_10_2020-yellow.svg)]( https://github.com/VenciFreeman/ZynqPrj) [![Generic badge](https://img.shields.io/badge/Build-Passing-green.svg)]( https://github.com/VenciFreeman/ZynqPrj) [![Generic badge](https://img.shields.io/badge/License-Apache_2.0-blue.svg)]( https://github.com/VenciFreeman/ZynqPrj/blob/master/LICENSE)
 
-## 选题过程
+## Topic Selection
 
-### 选题依据
+### Basis
 
-#### 初始选题
+#### Initial Topic
 
-> Google [Guetzli]( https://github.com/VenciFreeman/Guetzli ) 图像压缩开源项目
+Google [Guetzli]( https://github.com/VenciFreeman/Guetzli ) Image compression open source project.
 
-##### 面临的问题
+##### Problem
 
-- Vivado HLS 2016.4 并不支持较高版本的 C++ 标准
-- 代码自身问题，修改工作量过大
+- Vivado HLS 2016.4 does not support the higher version of the C ++ standard;
+- Problems about the code: too many codes need to modify.
 
 
-##### 解决方案
+##### Solution
 
-- 实现一个相比 Guetzli 更加简单一些的压缩算法
+Implement a compression algorithm simpler than Guetzli.
 
-#### 最终选题
+#### Final Topic
 
-> 基于 Guetzli 算法思路的一个较简单的图像压缩算法
+A simpler image compression algorithm based on Guetzli algorithm.
 
-### 课题背景
+### Background
 
-#### 图像压缩
+#### Image Compression
 
-> 在满足一定图像质量的前提下，用尽可能少的数据量来表示图像的方法
+> The method of representing the image with as little data as possible under the premise of satisfying a certain image quality.
 >
-> - 无损压缩
-> - 有损压缩 (本次项目选择 <JPEG>)
+> - lossless compression;
+> - Lossy compression (Such as JPEG).
 
-##### 原理
+##### Algorithm Principle
 
-- 图像中存在大量冗余
-  - 相邻像素间的相关性引起的空间冗余
-  - 不同彩色平面或频谱带的相关性引起的频谱冗余
-  - 视觉冗余 (本次项目选择)
-    - 人眼对亮度变化相对敏感，而对色度变化相对不敏感
-    - 在高亮度区对物体边缘相对敏感，对内部区域相对不敏感
-    - 因此高频部分一些细微的颜色差别并不容易被肉眼感知 (主要依据) 
+- There is a lot of redundant information in the image:
+  - Correlation between adjacent pixels;
+  - Correlation of different color planes or spectral bands;
+  - Visual redundancy.
+    - The human eye is relatively sensitive to changes in brightness, but relatively insensitive to changes in chromaticity;
+    - Relatively sensitive to the edges of objects in high brightness areas, relatively insensitive to internal darkness areas;
+    - Some subtle color differences in the high-frequency part are not easy to be perceived by the human eye (main basis).
 
-##### 新研究
+##### New Research
 
-> 在不修改表示图像的情况下进一步压缩 JPEG 图像中包含的数据的方法的新研究
+> The method of further compressing the data contained in JPEG images without modifying the image.
 
-- 适用于原始图像仅以 JPEG 格式可用，并且需要减小其大小以进行存档或传输的情况
-- 标准的通用压缩工具无法显着压缩 JPEG 文件
-- 通常此类方案利用对朴素方案的改进来对 DCT 系数进行编码
-  - 未考虑因素
-    - 同一块中相邻系数的大小之间的相关性；
-    - 相邻块中相同系数的大小之间的相关性；
-    - 不同通道中相同系数/块的大小之间的相关性。
+- Applicable when the original image is only available in JPEG format, and its size needs to be reduced for archiving or transmission;
+- Standard universal compression tools cannot significantly compress JPEG files;
+- DCT coefficients are usually coded using improvements to simple schemes.
+  - Not considered:
+    - Correlation between the size of adjacent coefficients in the same block;
+    - Correlation between the size of the same coefficient in adjacent blocks;
+    - Correlation between the size of the same coefficient / block in different channels.
 
-##### DCT主要原理 
+##### DCT Principle 
 
-- 将原始图像分为 8*8 的小块;
-- 将图像中每个 8*8 的block 进行 DCT 变换；
-- 量化。
+- Divide the original image into 8 × 8 small blocks;
+- DCT transform each 8 × 8 block in the image;
+- Quantify.
 
-##### 压缩高频部分的原因
+##### Reasons for Compressing High Frequency Parts
 
-- DCT 变换将低频部分集中在每个 8*8 块的左上角，高频部分在右下角
-- JPEG 的有损压缩损耗的是量化过程中的高频部分
-  - 低频部分比高频部分要重要得多，移除 50%的高频信息可能对于编码信息只损失了 5%
-  - 量化：用像素值除以量化表对应值所得的结果
-  - 量化表左上角的值较小，右上角的值较大，就起到了保持低频分量，抑制高频分量的目的
+- DCT transform concentrates the low frequency part in the upper left corner of each 8 × 8 block, and the high frequency part in the lower right corner;
+- The lossy compression loss of JPEG is the high frequency part of the quantization process;
+  - The low frequency part is much more important than the high frequency part, removing 50% of the high frequency information may only lose 5% of the encoded information;
+  - Quantization: the result of dividing the pixel value by the corresponding value of the quantization table;
+  - The value in the upper left corner of the quantization table is smaller, and the value in the upper right corner is larger, which serves the purpose of maintaining low frequency components and suppressing high frequency components.
 
-### 项目目标与任务分工 
+### Project Goals and Task Division
 
-#### HLS 实现 
+#### HLS implementation
 
-**总体方案描述**：编写可以运行和综合的图像压缩算法，并进行优化。
+**Overall plan description**: Write and optimize image compression algorithms which can be run and synthesized.
 
-**工作量预估**：理论上可以两个人合作完成，实际 debug 需要共同完成。
+**Estimated workload**: In theory, it can be done in cooperation with two people, but the actual debug needs to be completed together.
 
-**子任务划分**：
+**Sub-task division**:
 
-- 总体规划；
-- 文件预处理，输入输出；
-- 色域转换；
-- DCT 和 IDCT，以及相关辅助函数；
-- testbench；
-- debug；
-- HLS Directive 优化。
+- Overall plan;
+- File preprocessing, input and output;
+- Color gamut conversion;
+- DCT and IDCT, and related auxiliary functions;
+- Test bench;
+- Debug;
+- HLS Directive optimization.
 
-#### 嵌入式实现 
+#### Embedded Implementation
 
-**总体方案描述**：将算法加载到Zynq 板上并实现提速。
+**Overall scheme description**: Load the algorithm on the Zynq board and achieve speedup.
 
-**工作量预估**：理论上一个人可以完成，实际 debug 需要两个人共同完成.
+**Estimated workload**: In theory, one person can complete the task, and actual debugging requires two people to work together.
 
-**子任务划分**： 
+**Sub-task division**:
 
-- 代码修改；
-- debug。
+- Code modification;
+- Debug.
 
-#### 项目分工
+#### Project Division
 
-|                         组员                             |             HLS             |     嵌入式      |
-| :------------------------------------------------------: | :-------------------------: | :-------------: |
-|   [**Venci Freeman**](https://github.com/VenciFreeman)   | 文件预处理，色域转换，debug |      debug      |
-|   [**Luo Tian**](https://github.com/luotian12345)        |     DCT/IDCT，辅助函数      | 代码修改、debug |
-| [**Liu Jianwei**](https://github.com/liujianwei0225)     |  testbench，Directive优化   |  — (因伤退出)   |
+|                        Member                        |                         HLS                         |    Embed     |
+| :--------------------------------------------------: | :-------------------------------------------------: | :----------: |
+| [**Venci Freeman**](https://github.com/VenciFreeman) | File preprocessing & color gamut conversion & debug | Code & debug |
+|   [**Luo Tian**](https://github.com/luotian12345)    |            DCT/IDCT & Auxiliary function            |    debug     |
+| [**Liu Jianwei**](https://github.com/liujianwei0225) |               test bench & Directive                |     N/A      |
 
-## 实施过程
+## Implementation Process
 
-### 代码部分
+### Code
 
-#### 图像的编码与解码
+#### Image Encoding and Decoding
 
-##### 描述
+##### Description
 
-- 主要体现为一组 python 文件
-- 可将待处理的图片转化为包含图像每个像素点 RGB 亮度的文本文件，方便读入项目中进行处理
-- 使用 opencv 实现
-  - 优势：避免了在项目中使用 jpeg 或 libpng 库，操作更加简单
-- 属于算法的预处理和结果处理工作，得到可以展示的算法实现效果 
+- A set of Python codes;
+- Call the opencv library;
+  - Advantages: Avoid using jpeg or libpng library in the project.
+- Convert the image to be processed into a text file containing the RGB brightness of each pixel of the image, which is easy to read into the project for processing.
 
-##### 具体实现
+##### Implementation
 
-- 主要由两份 Python 代码实现，需要调用 opencv 库
-- 设计的 RGB 文本文件格式为： 
-  - 第一行：输入图像的宽与高像素信息
-  - u×v 行：图像中坐标为(u, v)的像素点的 RGB 信息，每一行为 3 个0-255 的数值，分别代表红色，绿色，蓝色亮度，数值间以空格分隔
+- Mainly implemented by two copies of Python code, you need to call the opencv library;
+- The designed RGB text file format is:
+  - Line 1: Enter the width and height pixel information of the image;
+  - Line u × v: RGB information of the pixels with coordinates (u, v) in the image, each row has three values of 0-255, representing red, green, and blue brightness, separated by spaces
 
-##### 伪代码
+##### Pseudo-Code
 
 ```c
 jpg_to_dat()
-输入：jpg文件 
-输出：dat文件 
+Input: jpg file 
+Output: dat file
 read jpg file 
-get u,v,rgb by opencv  // 使用 opencv库读取 jpg文件
+get u,v,rgb by opencv  // Call the opencv lib to read jpg file
 create dat file 
 write u, v at line 1 of dat file 
-for i←1 to u do  // 遍历宽 
-	for j←1 to v do  // 遍历高 
-  	write rgb[i][j][1,2,3] to dat file  // 写入 RGB亮度 
+for i←1 to u do  // Traverse width
+	for j←1 to v do  // Traverse height
+  	write rgb[i][j][1,2,3] to dat file  // Write RGB Brightness
     write \n
 ```
 
 ```c
 dat_to_jpg()
-输入：dat文件 
-输出：jpg文件 
+Input: dat file
+Output: jpg file 
 read png file 
-read u, v at line 1 of dat file  // 读取图片宽和高
+read u, v at line 1 of dat file  // Read width and height
 create jpg file 
-for i←1 to u do  // 遍历宽 
-	for j←1 to v do  // 遍历高 
-		read r,g,b value  // 读取 RGB亮度 
-    put pixel(u,v) by rgb values  // 画出此像素 
+for i←1 to u do  // Traverse width 
+	for j←1 to v do  // Traverse height 
+		read r,g,b value  // Read RGB Brightness
+    put pixel(u,v) by rgb values  // Put the pixel 
 ```
 
-#### 图像的色彩空间转换
+#### Color Space Conversion
 
-##### 概述
+##### Overview
 
-- 核心算法中的一个 cpp 文件
-- 主要负责输入输出文件在 RGB 色彩空间和 YCbCr 色彩空间之间的转换
-- 转换空间是为了方便进行更大的压缩
-  - 肉眼对色度的高频变化不敏感，因此对色度分量取平均值可以对图像进行压缩
-- 对图像进行了一定程度的压缩，更主要的是为后续离散余弦变换(DCT)操作进一步衰减图像高频分量进行准备
+- A cpp file in the core algorithm
+- For the conversion of the input and output files between the RGB color space and the YCbCr color space
+- The conversion is to facilitate greater compression
+  - The naked eye is not sensitive to high-frequency changes in chroma, so averaging the chroma components can compress the image
+- The image is compressed to a certain extent, and the main thing is to prepare for the subsequent discrete cosine transform (DCT) operation to further attenuate the high-frequency components of the image
 
-##### 具体实现
+##### Implementation
 
 - 这一部分主要由核心算法中的一个函数实现，即RGB转YCrCb色彩空间
 
-##### 伪代码
+##### Pseudo-Code
 
 ```c
 color_convert()
@@ -196,9 +195,9 @@ for i←1 to u do  // 遍历宽
    			store val in image[][][val] 
 ```
 
-#### 压缩算法关键函数的编写 
+#### Key Function
 
-##### 图像填充
+##### Image Fill
 
 - 图片长度与宽度未必是 8 的倍数，从而无法使其正好全部分为 8x8 的小块
   - 将图片的长和宽都扩展到大于等于它且为 8 倍数的最小正数
@@ -206,7 +205,7 @@ for i←1 to u do  // 遍历宽
 
 ##### DCT/IDCT
 
-##### 量化
+##### Quantify
 
 - DCT 变换将低频部分集中在每个 8x8 块的左上角，高频部分在右下角
 - 量化就是用像素值÷量化表对应值所得的结果
@@ -214,7 +213,7 @@ for i←1 to u do  // 遍历宽
 - 量化表得到的过程需要一个最初给定的基本量化矩阵，这个量化矩阵对于 jpeg 图片是通用的
 - 参数 Quality 的取值决定了生成的量化矩阵是什么
 
-#### HLS 成功运行
+#### HLS Success
 
 - 主要问题及解决方案
   - 参数的 multiple definition
@@ -224,11 +223,11 @@ for i←1 to u do  // 遍历宽
     - 与 memory之类的东西有关
     - 尝试将图片大小上限缩小，如 400x400
 
-### HLS部分
+### HLS
 
-#### JPEG 图像压缩算法的testbench 编写
+#### Test bench
 
-##### 伪代码
+##### Pseudo-Code 
 
 ```c++
 testbench.cpp
@@ -247,15 +246,15 @@ for()
 fclose()     
 ```
 
-#### JPEG 图像压缩算法的HLS 优化 
+#### HLS Optimization
 
-##### 概述
+##### Overview
 
 - 降低资源消耗
 - 将 float 浮点数类型改为定点数类型以及相应地修改了代码结构
 - 设置中间变量
 
-##### 具体实现
+##### Implementation
 
 |      Type       |      Operation      |
 | :-------------: | :-----------------: |
@@ -263,7 +262,7 @@ fclose()
 |  **for loop**   |     HLS UNROLL      |
 | **multi array** | HLS ARRAY_PARTITION |
 
-### 嵌入式
+### Embedded
 
 - 在Zynq板上运行
 - 将压缩后的数据直接打印
@@ -278,31 +277,31 @@ fclose()
   - 各种函数使用的错误
   - 调用 ip 的函数参数错误
 
-## 结果分析
+## Result Analysis
 
-### 代码运行结果
+### Code Results
 
-#### 预处理
+#### Pretreatment
 
 - 图像可以完全还原，没有任何差别，此项功能正确
 
-### HLS 优化代码运行结果
+### HLS Optimized Result
 
-- 在编写完成 testbench 后，对JPEG 图像压缩算法进行HLS Simulation，选择Top Function为 DCT_8x8_2D
+- 在编写完成 test bench 后，对JPEG 图像压缩算法进行HLS Simulation，选择Top Function为 DCT_8x8_2D
 - 通过对比 HLS Simulation 前后的文件夹可以发现生成的 RGB 参数已经成功输出到了指定的compress.txt 中
 - 考虑到程序结构的问题，Top Function 的选取只考虑其中部分资源消耗量大的变量
 - 在选取不同的 Top Function 的情况下，对未进行 HLS 优化和进行 HLS 优化的文件进行 HLS 综合
 - 经过 HLS 优化，各项参数都符合要求，不存在溢出的情况
 
-## 不足与展望
+## Shortcomings and outlook
 
-### 个人任务的不足之处
+### Personal Tasks
 
 - 运用了外部的 opencv 库在 Python 中实现图像预处理，因此每次运行图像压缩算法需要启动两个 Python 文件和一个 testbench.cpp文件
 - 更理想的解决方案是使用 jpeg 库直接用 C++实现图像读取和输出，但这一部分由于能力限制未能实现
 - 可替代的解决方案是编写一个更顶层的 Python 文件，并通过此文件去依次运行压缩算法的三个文件
 
-### 整个项目的不足之处
+### Project Tasks
 
 - 压缩效果不理想
 
@@ -325,13 +324,13 @@ fclose()
     - 在迟迟没有进展的情况下，大家都一定程度上参与了嵌入式开发
     - 由于 IP 核的一些问题，以及修改的代码在监视循环和监测时间的函数调用上存在一些无法解决的问题，在截至日期前没能完成实现 
 
-### 展望
+### Outlook
 
-- 完成嵌入式开发，证明优化后在 FPGA 上运行可以达到更好的效果
-- 优化算法，比如解决第 2 点中的输入图像大小限制，解决第 1 点中的图像压缩质量问题，然后将操作简单化
-- 总的说来项目加深了我们小组的成员对图像存储原理，图像压缩算法和 Vivado HLS 优化，嵌入式开发等方面的知识的理解
+- Completed embedded development, and proved that running on FPGA after optimization can achieve better results;
+- Optimize algorithms, such as solving the input image size limitation in point 2, solving the image compression quality problem in point 1, then simplifying the operation;
+- Overall, the project deepened the understanding of the members of our group on the knowledge of image storage principles, image compression algorithms and Vivado HLS optimization, embedded development, etc.
 
-## 参考文献
+## References
 
 - [Alakuijala, Jyrki, et al. "Guetzli: Perceptually guided jpeg encoder." arXiv preprint arXiv: 
   1703.04421 (2017).]( https://arxiv.org/abs/1703.04421 )

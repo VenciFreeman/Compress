@@ -1,3 +1,4 @@
-# 说明
+# readme
 
-可能需要将testbench中的两个读写文件的绝对路径进行修改才能运行。
+Maybe need to change the address in test bench before running it.
+
